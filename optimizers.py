@@ -11,7 +11,7 @@ Original file is located at
 import numpy as np
 from scipy.optimize import minimize
 from sklearn.preprocessing import PolynomialFeatures
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LinearRegression # type: ignore
 from sklearn.pipeline import make_pipeline
 import csv
 
@@ -73,7 +73,7 @@ def generate_data(x, radius):
         y.append(constraint(x_new, mu, A(mu)))
     return np.array(X), np.array(y)
 
-"""def fit_regression_model(X, y):
+def fit_regression_model(X, y):
     # Create a polynomial features object (degree=2 for quadratic)
     poly_features = PolynomialFeatures(degree=2, include_bias=False)
 
@@ -83,12 +83,12 @@ def generate_data(x, radius):
     # Fit the model
     model.fit(X, y)
 
-    return model"""
+    return model
 
-def fit_regression_model(X, y):
+"""def fit_regression_model(X, y):
     model = LinearRegression()
     model.fit(X, y)
-    return model
+    return model"""
 
 def trust_region_optimization(x0, max_iterations=100, initial_radius=0.01):
     x = x0
